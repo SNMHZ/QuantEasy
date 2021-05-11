@@ -7,9 +7,14 @@ import backtester as m_bt
 
 def index(request):
     if request.method == 'POST' and request.POST['start'] != '' and request.POST['end'] != '':
+        print("**")
         #universe (kospi / kosdaq)
         universe=request.POST['universe']
         print(universe)
+
+        #Screening
+        screening=request.POST['Screening']
+        print(screening)
 
         #money (int.)
         money=int(request.POST['money'])
@@ -43,6 +48,11 @@ def index(request):
         m_cursor = m_db.cursor(pymysql.cursors.DictCursor)
 
         t_list = ['A005930', ]
+        if screening =="거래량":
+            t_list=['A005930','A005380','A000660','A066570','A009150','A000720','A011070','A030200','A017670','A034220','A028260','A015760','A021240','A097950','A051900','A005490','A032640','A000270','A036460','A006400']
+        else:
+            pass
+
         value_df=m_bt.quarry_value(t_list, start_date, end_date, m_cursor)
         
         bt_res = m_bt.backtest(value_df, seed_money=money)
