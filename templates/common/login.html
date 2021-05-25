@@ -11,7 +11,7 @@
             <div class="col-md-7 ftco-animate">
                 <div class="row">
                     <div class="col-4">
-                        <h4>로그인</h4>
+                        <h4 style="color: white;">로그인</h4>
                     </div>
                     <div class="col-8 text-right">
                         <span>또는 <a href="{% url 'common:signup' %}">계정을 만드세요.</a></span>
@@ -19,7 +19,7 @@
                 </div>
                 <form method="post" class="post-form" action="{% url 'common:login' %}">
                     {% csrf_token %}
-                    {% include "form_login_errors.html" %}
+                    {% include "common/form_login_errors.html" %}
                     <div class="form-group">
                         <label for="username">사용자ID</label>
                         <input type="text" class="form-control" name="username" id="username"

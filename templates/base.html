@@ -43,7 +43,7 @@
 					<li class="nav-item"><a href="{% url 'common:logout' %}" class="nav-link">로그아웃</a></li>
 					{% else %}
 					<li class="nav-item"><a href="{% url 'common:login' %}" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="/contact.html" class="nav-link">회원가입</a></li>
+					<li class="nav-item"><a href="{% url 'common:signup' %}" class="nav-link">회원가입</a></li>
 					{% endif %}
 				</ul>
 			</div>
