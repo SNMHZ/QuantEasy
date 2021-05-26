@@ -15,12 +15,12 @@
                         <h4 style="color: white;">회원가입</h4>
                     </div>
                     <div class="col-8 text-right">
-                        <span>또는 <a href="{% url 'common:login' %}">로그인 하세요.</a></span>
+                        <span>또는 <a href="{% url 'accounts:login' %}">로그인 하세요.</a></span>
                     </div>
                 </div>
                 <form method="post" class="post-form">
                     {% csrf_token %}
-                    {% include "common/form_login_errors.html" %}
+                    {% include "accounts/form_login_errors.html" %}
                     <div class="form-group">
                         <label for="username">사용자 이름</label>
                         <input type="text" class="form-control" name="username" id="username"

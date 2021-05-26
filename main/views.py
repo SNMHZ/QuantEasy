@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import pymysql
 import backtester as m_bt
 
 # Create your views here.
-
 def index(request):
+    cur_user = request.user
     if request.method == 'POST' and request.POST['start'] != '' and request.POST['end'] != '':
+        if not cur_user.is_authenticated:
+            return redirect("/accounts/login/")
+        
         print("**")
         #universe (kospi / kosdaq)
         universe=request.POST['universe']
@@ -64,5 +67,5 @@ def index(request):
         cont = { 'tested' : True}
 
         return render(request, 'main/index.html', cont)
-
+    
     return render(request, 'main/index.html')
