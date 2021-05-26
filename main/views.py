@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import pymysql
-import backtester as m_bt
+import modules.backtester as m_bt
 
 # Create your views here.
 def index(request):
